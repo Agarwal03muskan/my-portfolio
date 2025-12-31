@@ -527,7 +527,86 @@
             margin: 0 auto;
             font-size: 1.15rem;
         }
+.contact-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
 
+.contact-form {
+    max-width: 600px;
+    margin: 40px auto 0;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+.form-status {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+}
+
+.form-status.success {
+    background: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+.form-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    display: block;
+}
         /* Experience Section */
         .experience-card {
             background: var(--bg-secondary);
@@ -1656,37 +1735,23 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <div class="contact-section fade-in">
-                    <div class="contact-title">Let's Build Something Amazing</div>
-                    <p class="contact-description">
-                        I'm actively seeking software engineering opportunities where I can contribute my skills 
-                        in full-stack development and AI/ML. Open to discussing new projects, collaborations, 
-                        or just having a chat about technology!
-                    </p>
-                    
-                    <div class="contact-links">
-                        <a href="mailto:muskanagarwal0603@gmail.com" class="contact-link">
-                            <span class="contact-icon">📧</span>
-                            <span>Email Me</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mknagarwal/" target="_blank" class="contact-link">
-                            <span class="contact-icon">💼</span>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/Agarwal03muskan" target="_blank" class="contact-link">
-                            <span class="contact-icon">💻</span>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="tel:7073652269" class="contact-link">
-                            <span class="contact-icon">📱</span>
-                            <span>Call Me</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title">Let's Connect With Us</h2>
+        <p class="section-subtitle">Have a question or want to work together? Send us a message!</p>
+        
+        <form name="contact" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="contact">
+  
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  
+  <button type="submit">Send</button>
+</form>
+
+    </div>
+</section>
     </main>
 
     <footer>
@@ -1779,6 +1844,7 @@
                 shape.style.transform = `translate(${x}px, ${y}px)`;
             });
         });
+       
     </script>
 </body>
 </html>
