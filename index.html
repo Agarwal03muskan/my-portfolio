@@ -1186,7 +1186,290 @@
         .contact-icon {
             font-size: 1.3rem;
         }
+/* ====================================
+   NETLIFY CONTACT FORM STYLING
+   Matches your portfolio's dark theme
+   ==================================== */
 
+/* Form Container */
+form[name="contact"] {
+    background: var(--bg-secondary);
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background effect */
+form[name="contact"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.05), transparent 50%);
+    pointer-events: none;
+}
+
+/* All form elements positioning */
+form[name="contact"] > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Input and Textarea Styling */
+form[name="contact"] input[type="text"],
+form[name="contact"] input[type="email"],
+form[name="contact"] textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Outfit', Arial, sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Placeholder styling */
+form[name="contact"] input::placeholder,
+form[name="contact"] textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* Focus state */
+form[name="contact"] input[type="text"]:focus,
+form[name="contact"] input[type="email"]:focus,
+form[name="contact"] textarea:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    background: var(--bg-tertiary);
+}
+
+/* Textarea specific */
+form[name="contact"] textarea {
+    min-height: 160px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* Submit Button */
+form[name="contact"] button[type="submit"] {
+    width: 100%;
+    padding: 1.1rem 2rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: 'Outfit', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px var(--glow-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Button hover effect */
+form[name="contact"] button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px var(--glow-primary);
+}
+
+/* Button active state */
+form[name="contact"] button[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+/* Success Message */
+form[name="contact"] .success-message {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 10px;
+    color: #22c55e;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Success message icon */
+form[name="contact"] .success-message::before {
+    content: '✓ ';
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+/* Hidden field (honeypot spam protection) */
+form[name="contact"] input[type="hidden"] {
+    display: none;
+}
+
+/* Error state for validation */
+form[name="contact"] input:invalid:not(:placeholder-shown),
+form[name="contact"] textarea:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+/* Loading state (when form is submitting) */
+form[name="contact"].submitting button[type="submit"] {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+form[name="contact"].submitting button[type="submit"]::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+@media (max-width: 768px) {
+    form[name="contact"] {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+
+    form[name="contact"] input[type="text"],
+    form[name="contact"] input[type="email"],
+    form[name="contact"] textarea {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    form[name="contact"] button[type="submit"] {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    form[name="contact"] textarea {
+        min-height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    form[name="contact"] {
+        padding: 1.5rem 1rem;
+    }
+
+    form[name="contact"] .success-message {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+}
+
+/* ====================================
+   OPTIONAL: Two-Column Layout
+   Use this if you want form + info side by side
+   ==================================== */
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-info-item {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateX(10px);
+}
+
+.contact-info-item .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.contact-info-item .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.contact-info-item .value {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.contact-info-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-item a:hover {
+    color: var(--accent-primary);
+}
+
+/* Responsive for two-column layout */
+@media (max-width: 1024px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ====================================
+   ACCESSIBILITY IMPROVEMENTS
+   ==================================== */
+
+/* Focus visible for keyboard navigation */
+form[name="contact"] input:focus-visible,
+form[name="contact"] textarea:focus-visible,
+form[name="contact"] button:focus-visible {
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    form[name="contact"] *,
+    form[name="contact"] *::before,
+    form[name="contact"] *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
         /* Footer */
         footer {
             text-align: center;
